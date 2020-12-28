@@ -1,0 +1,39 @@
+.topbtn {
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f2;
+  opacity: 0.7;
+}
+.topbtn:hover {
+  opacity: 1;
+}
+#pl,
+#mi,
+#pl2,
+#mi2,
+#pl3,
+#mi3,
+#pl4,
+#mi4,
+#pl5,
+#mi5,
+#pl6,
+#mi6,
+#adpl,
+#admi,
+#adpl2,
+#admi2,
+#adpl3,
+#admi3,
+#adpl4,
+#admi4 {
+  border-radius: 50%;
+}
+.features-image {
+  cursor: pointer;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>九九乘法表</title>
+		<link rel="stylesheet" href="">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&display=swap" rel="stylesheet">
+	</head>
+
+<style>
+
+#container{height:90vh;
+			}
+		
+			
+			.col-md{border-radius: 50px;
+						margin:5px ;
+						
+						
+						}
+ul{font-size: 3em;
+	font-weight: bold;
+  list-style-type: none;
+		color: #FFFFFF;
+		
+
+}
+li{font-size:0.5em;
+	font-weight: 500;
+	position:relative;
+	top: -40px;
+	left: 25%;
+	color: #000000;
+	
+}
+	
+
+h1{font-family: 'Noto Sans TC', sans-serif;
+
+}
+
+	
+</style>
+
+
+
+	<body>
+		
+
+<center>
+<h1>九九乘法表</h1>
+</center>
+
+
+
+
+		<script>
+			var a=1;
+				document.write("<div class=container id=container>");
+			for(var i=1;i<=3;i++){
+				document.write("<div class=row>");
+					for(var x=1;x<=3;x++){
+							document.write("<div class=col-md>");
+								document.write("<ul  >"+a);
+								for(y=1;y<=9;y++){
+
+									document.write("<li>"+a+"\u2716"+y+"="+a*y+"</li>");
+								}a+=1;
+									document.write("</ul>")
+							document.write("</div>");
+					}	
+						document.write("</div>");
+			}
+
+			document.write("</div>")
+
+
+
+</script>
+			</body>
+
+			<script>
+				$(document).ready(function(){
+			$('.col-md:eq(0)').css('background-color','#99c1de');
+			$('.col-md:eq(1)').css('background-color','#bcd4e6');
+			$('.col-md:eq(2)').css('background-color','#d6e2e9');
+			$('.col-md:eq(3)').css('background-color','#f0efeb');
+			$('.col-md:eq(4)').css('background-color','#dbe7e4');
+			$('.col-md:eq(5)').css('background-color','#c5dedd');
+			$('.col-md:eq(6)').css('background-color','#fad2e1');
+			$('.col-md:eq(7)').css('background-color','#fde2e4');
+			$('.col-md:eq(8)').css('background-color','#fff1e6');
+			
+
+			});
+
+
+			</script>
+					</html>
