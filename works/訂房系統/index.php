@@ -15,24 +15,27 @@
 .container-fluid{background-color: #000000;height:100vh;}
 #top{background-color: #dab04c;
 	text-indent: -9999px;
-	height: 6px;
+	
 }
 #top1{background-color: #393e46;
-	height: 130px;
+	
 	text-align: center;
 	color: #FFFFFF;
-	padding: 30px;
+	padding: 2%;
 }	
 #nav{background-color: #222831;
-	height: 50px;
+
 	color: #FFFFFF;
 	text-align: center;
-	padding: 7px;
-	font-size:20px;
+	padding: 0.5%;
+	font-size:1rem;
 	font-family: "微軟正黑體";
 }
 
+#carousel{margin-top: 1%;
 
+}
+small{color:#FFFFFF;}
 
 
 
@@ -44,7 +47,7 @@
 
 #btn1:hover,
 #btn1:active {
-  letter-spacing: 5px;
+  letter-spacing: 3px;   /*聚焦時的間距*/
 }
 
 #btn1:after,
@@ -70,6 +73,7 @@
   -webkit-transition: width 350ms ease-in-out;
           transition: width 350ms ease-in-out;
   width: 70%;
+
 }
 
 #btn1:hover:before {
@@ -90,30 +94,63 @@
 
 
 <div class="row" id="top">
-<div class="col-xs-12 col-md-12">光光訂房</div>
+<div class="col-xs-12 col-sm-12">光光訂房</div>
 </div>
 
 
 <div class="row" id="top1">
-<div class="hidden-xs col-md-4"></div>   
-<div class="col-xs-12 col-md-4"><a href="#"><img src="images/LOGO.png"></a></div>  
-<div class="hidden-xs col-md-4"></div>  
+ 
+<div class="col-xs-4 col-sm-4 offset-sm-4 "><a href="#"><img src="images/LOGO.png"></a></div>  
+ 
 </div>
 
 
 <div class="row" id="nav">
-<div class="col-xs-1 col-md-1 offset-3" id="btn1">回首頁 </div>
-<div class="col-xs-1 col-md-1" id="btn1">最新消息 </div>
- <div class="col-xs-1 col-md-1" id="btn1">客房導覽</div>
- <div class="col-xs-1 col-md-1" id="btn1"> 訂房須知 </div>
-  <div class="col-xs-1 col-md-1" id="btn1">我要訂房 </div>
-  <div class="col-xs-1 col-md-1" id="btn1">訂房查詢</div>
+<div class="col-xs-1 col-sm-1 offset-sm-3 text-nowrap" id="btn1" >回首頁 </div>
+<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1">最新消息 </div>
+ <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1">客房導覽</div>
+ <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"> 訂房須知 </div>
+  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1">我要訂房 </div>
+  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1">訂房查詢</div>
 </div>
 
+<div class="row" id="carousel">
+<div id="carouselExampleIndicators" class="carousel slide  col-md-8 offset-2" data-ride="carousel">
+ 
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner ">
+    <div class="carousel-item active  ">
+      <img src="images/Carousel-3.jpg" width="70%"  class="rounded mx-auto d-block"   alt="曙光周邊圖">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Carousel-2.jpg" width="70%"  class="rounded mx-auto d-block" alt="曙光周邊圖">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Carousel-1.jpg" width="70%"  class="rounded mx-auto d-block"  alt="曙光周邊圖">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+</div>
+
+<div class="row">
+	
+<div class="col-md-8 offset-md-2 text-center" id="footer"><small>曙光訂房 地址:台中市潭子區圓通南路1111111號&nbsp;<img src="images/map.png" width="15px"> 服務電話:(04)1234-5678 傳真:(04)1234-9865</small></div>
 
 
-
-
+</div>
 
 
 
