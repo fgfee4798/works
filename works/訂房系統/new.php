@@ -37,6 +37,7 @@
 
 }
 
+#footer{position: relative;}
 
 small{color:#FFFFFF;}
 
@@ -85,8 +86,26 @@ a:hover,a:focus{color:#fff;text-decoration: none;outline: none;}
   top: 0;
   width: 70%;
 }
+h1,h3,h4,h5,p,li{color:#FFFFFF;}
+
+h2{color:#FF9;
+}
+
+#newcolor{background-color: #FFFFFF;
+			text-indent: -9999px;
+			height: 2px;
+}
+
+		
+ul{margin-top:25px;
 
 
+list-style: none;
+}
+li{margin-bottom:25px;background-color: #222222;
+	height: 160px;
+	position: relative;
+}
 
 </style>
 
@@ -119,36 +138,31 @@ a:hover,a:focus{color:#fff;text-decoration: none;outline: none;}
 
 </div>
 
-<div class="row" id="carousel">
-<div id="carouselExampleIndicators" class="carousel slide  col-md-8 offset-2" data-ride="carousel">
- 
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner ">
-    <div class="carousel-item active  ">
-      <img src="images/Carousel-3.jpg" width="70%"  class="rounded mx-auto d-block"   alt="曙光周邊圖">
-    </div>
-    <div class="carousel-item">
-      <img src="images/Carousel-2.jpg" width="70%"  class="rounded mx-auto d-block" alt="曙光周邊圖">
-    </div>
-    <div class="carousel-item">
-      <img src="images/Carousel-1.jpg" width="70%"  class="rounded mx-auto d-block"  alt="曙光周邊圖">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+
+<div class="row">
+<div class="col-xs-12  col-sm-3 offset-sm-3">	
+<p><h1>最新消息</h1></p>
+</div>
+</div>
+<div class="row" >
+<div class="col-xs-12 col-sm-6 offset-sm-3" id="newcolor">new</div>
 </div>
 
+
+<div class="row">
+<div class="col-xs-8 col-sm-6 offset-sm-3">	
+<ul>
+<li><h2>2020/12/30</h2><h3>安心旅遊~~</h3></li>
+<li><h2>2020/12/30</h2><h3>安心旅遊~~</h3></li>
+<li><h2>2020/12/30</h2><h3>安心旅遊~~</h3></li>
+
+</ul>
 </div>
+</div>
+
+
+
+
 
 <div class="row" id="footer">
 	
