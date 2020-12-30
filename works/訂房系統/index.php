@@ -7,7 +7,7 @@
 
 	
 
-	<title>光光訂房系統</title>
+	<title>曙光訂房系統</title>
 	<link rel="stylesheet" href="">
 </head>
 
