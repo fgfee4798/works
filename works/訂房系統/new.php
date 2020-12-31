@@ -1,3 +1,13 @@
+<?php 
+require_once("mysql.php");
+
+$new="SELECT * FROM new ORDER BY id ASC " ;
+$new_query=$db_link->query($new);
+
+ ?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +17,7 @@
 
 	
 
-	<title>曙光訂房系統</title>
+	<title>曙光訂房系統/最新消息</title>
 	<link rel="stylesheet" href="">
 </head>
 
@@ -103,8 +113,9 @@ ul{margin-top:25px;
 list-style: none;
 }
 li{margin-bottom:25px;background-color: #222222;
-	height: 160px;
-	position: relative;
+	height: 100px;
+	position: relative;.
+
 }
 
 </style>
@@ -131,10 +142,10 @@ li{margin-bottom:25px;background-color: #222222;
 <div class="row" id="nav">
 <div class="col-xs-1 col-sm-1 offset-sm-3 text-nowrap" id="btn1" ><a href="index.php">回首頁</a> </div>
 <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="new.php">最新消息</a> </div>
- <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#"><a href="#">客房導覽</a> </div>
- <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"> <a href="#">訂房須知</a>  </div>
-  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#">我要訂房</a>  </div>
-  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#">訂房查詢</a> </div>
+ <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="room.php">客房導覽</a> </div>
+ <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"> <a href="note.php">訂房須知</a>  </div>
+  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="reservation.php">我要訂房</a>  </div>
+  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="check_reservation.php">訂房查詢</a> </div>
 
 </div>
 
@@ -152,9 +163,15 @@ li{margin-bottom:25px;background-color: #222222;
 <div class="row">
 <div class="col-xs-8 col-sm-6 offset-sm-3">	
 <ul>
-<li><h2>2020/12/30</h2><h3>安心旅遊~~</h3></li>
-<li><h2>2020/12/30</h2><h3>安心旅遊~~</h3></li>
-<li><h2>2020/12/30</h2><h3>安心旅遊~~</h3></li>
+
+<?php while($new_query_e=$new_query->fetch_assoc()){ ;
+ echo "<li>"."<h2>".$new_query_e["new_date"]."</h2>"."<h4>&nbsp;&nbsp;".$new_query_e["news"]."</h4>"."</li>" 
+
+ ; }?>
+
+
+
+
 
 </ul>
 </div>
