@@ -1,3 +1,22 @@
+<?php 
+
+require_once("mysql.php");	//預設值
+$room_ima="SELECT img_id1,img_styles FROM room_img WHERE room_style='c' " ;
+$room_imag=$db_link->query($room_ima);
+
+
+if(isset($_GET["room_style"])){		//選取客房
+require_once("mysql.php");
+$room_ima="SELECT img_id1,img_styles FROM room_img WHERE room_style='{$_GET["room_style"]}' " ;
+$room_imag=$db_link->query($room_ima);
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -117,7 +136,7 @@
 			<div class="row" id="nav">
 				<div class="col-xs-1 col-sm-1 offset-sm-3 text-nowrap" id="btn1" ><a href="index.php">回首頁</a> </div>
 				<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="new.php">最新消息</a> </div>
-				<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#"><a href="#">客房導覽</a> </div>
+				<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#"><a href="room.php">客房導覽</a> </div>
 				<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"> <a href="#">訂房須知</a>  </div>
 				<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#">我要訂房</a>  </div>
 				<div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#">訂房查詢</a> </div>
@@ -127,27 +146,33 @@
 					<p><h1>客房導覽</h1></p>
 				</div>
 			</div>
+
+
 			<div class="row" >
 				<div class="col-xs-12 col-sm-6 offset-sm-3" id="newcolor">room</div>
 			</div>
 			<div class="row" id="room_menu">
-				<div class="col-xs-6 col-sm-2 offset-sm-4"><h4><a href="room.php?style=room_c">豪華風</a></h4></div>
-				<div class="col-xs-6 col-sm-2 "><h4><a href="room.php?style=room_d">尊爵風</a></h4></div>
+				<div class="col-xs-6 col-sm-2 offset-sm-4"><h4><a href="room.php?room_style=c">豪華風</a></h4></div>
+				<div class="col-xs-6 col-sm-2 "><h4><a href="room.php?room_style=d">尊爵風</a></h4></div>
+
+
+
 			</div>
 			<div class="row" >
 				<div class="col-xs-12 col-sm-6 offset-sm-3" id="newcolor">room</div>
 			</div>
 			<div class="row" id="room_images">
-				<div class="col-xs-6 col-sm-2 offset-sm-3" id="hvr-grow-shadow"  ><img src="images/單人房(豪華)-1.jpg"  width="280" height="180" >
-					<div id="images"><h3>豪華風/單人房</h3></div>
-				</div>
-				<div class="col-xs-6 col-sm-2 " id="hvr-grow-shadow"  ><img src="images/單人房(豪華)-1.jpg"  width="280" height="180" >
-					<div id="images"><h3>豪華風/單人房</h3></div>
-				</div>
 
-				<div class="col-xs-6 col-sm-2 " id="hvr-grow-shadow"  ><img src="images/單人房(豪華)-1.jpg"  width="280" height="180" >
-					<div id="images"><h3>豪華風/單人房</h3></div>
-				</div>
+				<div class="col-sm-2 offset-1"></div>
+
+				<?php 
+				while($room_name=$room_imag->fetch_assoc()){ ?>
+				<div class="col-xs-6 col-sm-2  " id="hvr-grow-shadow"  ><img src="images\<?php echo $room_name['img_id1'];  ?>"  width="280" height="180" >
+					<div id="images"><h3><?php echo $room_name['img_styles'] ?></h3></div>
+				</div>  <?php } ?>
+				
+
+				
 
 			</div>
 			<div class="row" id="footer">
