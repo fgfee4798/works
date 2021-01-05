@@ -16,8 +16,7 @@
 	$sql_query_assistant = "SELECT * FROM assistant_list";
 	$result_assistant = $db_link->query($sql_query_assistant);
 	if (!isset($_POST["action_search"])) {
-		$_POST['search_month'] = date("m");
-		$search_keypoint_month = "____-".$_POST['search_month']."-__";
+		
 		$result_search = $db_link->prepare("SELECT `signal_5`.`signal_number`, `signal_5`.`unit_name`, `signal_5`.`contact_person_name`, `signal_5`.`contact_person_phone`, `signal_5`.`consultation_address`, `signal_5`.`evaluation_date`, `signal_5`.`committee_member_a`, `signal_5`.`c_a_phone`, `signal_5`.`committee_member_b`, `signal_5`.`c_b_phone`, `signal_5`.`assistant_real`, `signal_5`.`a_r_phone`, `signal_5`.`assistant_sign`, `signal_3`.`evaluation_time`, `committee_member_list`.`c_address`, `committee_member_list`.`c_email`, `assistant_list`.`a_address`, `assistant_list`.`a_email`, `signal_3`.`case_closed_upload`, `signal_3`.`case_closed_post`, `signal_3`.`tutor_frequency`
 			FROM `signal_5`
 			INNER JOIN `signal_3`
@@ -28,7 +27,7 @@
 			ON `signal_5`.`assistant_real` = `assistant_list`.`a_name`
 			WHERE `signal_5`.`evaluation_date` LIKE ?
 			GROUP BY `signal_5`.`signal_number`");
-		$result_search->bind_param("s", $search_keypoint_month);
+	
 		$result_search->execute();
 		$result_search->bind_result($search_number, $search_un, $search_cpn, $search_cpp, $search_ca, $search_ed, $search_cma, $search_cap, $search_cmb, $search_cbp, $search_ar, $search_arp, $search_as, $search_et, $search_cca, $search_ce, $search_aa, $search_ae, $search_ccu, $search_ccp, $search_tf);
 		$result_search->store_result();
