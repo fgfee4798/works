@@ -1,8 +1,8 @@
 <?php
 	//資料庫主機設定
 	$db_host = "sql304.byethost17.com"; //預設3306
-	$db_username = "b17_27105184";
-	$db_password = "CHEN5660";
+	$db_username = "";
+	$db_password = "";
 	$db_name = "b17_27105184_TTQS";
 	//連線資料庫
 	$db_link = @new mysqli($db_host, $db_username, $db_password, $db_name);
