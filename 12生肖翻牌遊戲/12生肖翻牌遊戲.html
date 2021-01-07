@@ -1,0 +1,190 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>12生肖翻牌遊戲</title>
+<style>
+body{background-image:url("背景圖.jpg");
+background-size:cover;
+ }
+</style>
+
+
+<script language="javascript">
+var i,j;
+var r,t;
+var p=24;    //張數
+var b=new Array(52);  //一副樸克牌
+var a=new Array(p);
+var outed=new Array(p);//outed 取走 
+var opened=new Array(p);//opened 打開
+var second; //第二張牌
+var cardfirst ; //第一張牌
+var t1,t2; //計時器用
+var c; //計時器用
+c=0;
+//樸克牌牌面
+var d=new Array("g0.png","g1.png" ,"g2.png" ,"g3.png" ,"g4.png" ,"g5.png","g6.png","g7.png"   ,"g8.png","g9.png",
+				"g10.png" ,	"g11.png","g12.png","g13.png","g14.png","g15.png","g16.png","g17.png","g18.png","g19.png",
+				"g20.png" ,	"g21.png","g22.png","g23.png","g24.png","g25.png","g26.png","g27.png","g28.png","g29.png",
+				"g30.png"  ,"g31.png","g32.png","g33.png","g34.png","g35.png","g36.png","g37.png","g38.png","g39.png",
+				"g40.png" ,	"g41.png","g42.png","g43.png","g44.png","g45.png","g46.png","g47.png","g48.png","g49.png",
+				"g50.png" ,	"g51.png","g52.png","g53.png","g54.png") ;
+
+function aa(){
+	document.myform.B2.disabled=false;
+	for (i=0;i<=23;i++)
+		document.gra[i].src=d[52];  //24張先蓋起來
+		
+	//設定樸克牌初值
+	for (i=0;i<=51;i++)
+		b[i]=i;
+	//洗牌
+	for (i=0;i<=51;i++) {
+		r=Math.floor(52*Math.random());//回傳無條件捨去後的最大整數
+		t=b[i];b[i]=b[r];b[r]=t;
+	}
+	//取前面12張，每張複製成兩張
+	for (i=0;i<=11;i++){
+		a[i*2]=b[i];
+		a[i*2+1]=b[i];
+	}
+	//洗牌
+	for (i=0;i<=23;i++) {
+		r=Math.floor(24*Math.random());
+		t=a[i];a[i]=a[r];a[r]=t;
+	}
+	
+	//初始化
+	second=false;
+	for (i=0;i<=23;i++){
+		opened[i]=false;
+		outed[i]=false;
+	}
+	cardfirst=-1;
+	c=0;
+	document.myform.T1.value=0;  //秒數
+	var nowtime=new Date();  //宣告時間物件
+	t1=nowtime.getTime();    //取現在的時間，單位ms
+	
+}
+
+function check(w){	
+	document.myform.B2.disabled=true;	//提示按鈕除能
+	var nowtime=new Date(); 
+	t2=nowtime.getTime();   //取目前時間，單位ms
+	t3=(t2-t1)/(1000);   //計算所使用的時間
+	document.myform.T1.value=Math.floor(t3); //顯示經過時間
+	window.status=Math.floor(t3); //將時間記載在瀏覽器狀態列 
+
+	if (outed[w] || opened[w])      //outed 已經取走 ，opened 已經打開
+		return;
+	document.gra[w].src=d[a[w]];     //翻開這張牌
+	
+	if (second) {      //已經翻起兩張
+		second=false;
+		if (a[w]==a[cardfirst]) {         //兩張牌相同
+			setTimeout("k2("+w+","+cardfirst+");",1000);//呼叫副程式k2 停留1秒後取走			
+			outed[w]=true;       //取走
+			outed[cardfirst]=true; //取走
+			c++;   //計數器			
+			if (c==12){ //game over
+				var nowtime=new Date(); 
+				t2=nowtime.getTime();   //取目前的時間，單位ms
+				t3=(t2-t1)/(1000);   //計算所使用的時間
+				document.myform.T1.value=Math.floor(t3);
+				window.status=t3;
+				alert("結束 , 您一共使用 "+Math.floor (t3)+ " 秒");
+				return;
+			}
+		}
+		else {                  //兩張牌不同
+			setTimeout("k1("+w+","+cardfirst+");",1000);//停留1秒後，蓋回兩張牌
+			opened[w]=false;        //w 是目前這一張
+			opened[cardfirst]=false;    //cardfirst為上一張
+			cardfirst=-1;
+		}
+	}
+	else {          //僅翻起第一張
+		second=true;
+		opened[w]=true;
+		cardfirst=w;     //將第一張牌的位置記起來
+	}
+}
+
+//取走副程式
+function k2(w,cardfirst){
+	document.gra[w].src=d[53];
+	document.gra[cardfirst].src=d[53];
+	return;
+}
+
+//蓋回去
+function k1(w,cardfirst){
+	document.gra[w].src=d[52];
+	document.gra[cardfirst].src=d[52];
+	return;
+}
+
+//提示畫面，24張都翻起來
+function bb(){
+	document.myform.B2.disabled=true;
+	for (i=0;i<=23;i++)
+		document.gra[i].src=d[a[i]];  //24張都翻起來
+	setTimeout("b1()",2000);//停留2秒後，全部蓋回
+
+}
+
+//24張先蓋起來
+function b1(){
+	for (i=0;i<=23;i++)
+		document.gra[i].src=d[52];  
+}	
+</script>
+
+
+</head>
+<body  onload ="aa()">
+
+<center>
+<p><font size="7" face="標楷體" color="#FF0000"><b>12生肖猜牌遊戲</b></font></p>
+<p><font face="標楷體" size="5">請先按一下下面的『開始』按鈕，並逐一兩兩翻閱每張牌，</font></p>
+
+<p><font face="標楷體" size="5">若連續翻起的兩張牌均相同，則可取走此兩張牌，</font></p>
+<p><font face="標楷體" size="5">否則電腦會自動蓋回，直到所有牌均取完為止。</font></p>
+
+<p>
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(0)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(1)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(2)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(3)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(4)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(5)" ></p>
+<p>
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(6)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(7)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(8)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(9)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(10)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(11)" >&nbsp;&nbsp;&nbsp; </p>
+<p><img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(12)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(13)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(14)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(15)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(16)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(17)" >&nbsp;&nbsp;&nbsp; </p>
+<p><img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(18)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(19)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(20)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(21)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(22)" >&nbsp;&nbsp;&nbsp;
+<img name="gra" border="0" src="g52.png" width="88" height="108" onclick="check(23)" ></p>
+<form name="myform" method="POST" action="--WEBBOT-SELF--"style="font-size:35" >	
+	<p><input type="button" value="開始" name="B1" onclick="aa()" style="width:100px;height:50px;"> 
+	<b style="color:#FFFFFF">您一共使用<input type="text" name="T1" size="10" style="width:100px;height:50px;">秒 </b>
+	<input type="button" value="提示" name="B2" onclick="bb()" style="width:100px;height:50px;"></p>
+</form><p><font face="標楷體" size="5" color="#FF0000" >!開始前給予提示一次，遊戲開始後不給提示，</font></p>
+<p>　</p></center>
+
+</body>
+</html>
