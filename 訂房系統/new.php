@@ -22,7 +22,7 @@ $new_query=$db_link->query($new);
 </head>
 
 <style>
-.container-fluid{background-color: #000000;height:100vh;}
+.container-fluid{background-color: #000000;height:100%;}
 #top{background-color: #dab04c;
 	text-indent: -9999px;
 	height: 5px;

@@ -50,7 +50,7 @@ $room_imag=$db_link->query($room_ima);
 	}
 	#carousel{margin-top: 1%;
 	}
-	#footer{position: relative;}
+	#footer{width: 100%; position:fixed;top:95%;}
 	small{color:#FFFFFF;}
 	a{color: #FFFFFF;text-decoration: none;outline: none;}
 	a:hover,a:focus{color:#fff;text-decoration: none;outline: none;}
@@ -117,10 +117,11 @@ $room_imag=$db_link->query($room_ima);
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
 	}
-	#images{position: absolute;
-		width: 280px;height: 40px;text-align: center;color: #FFFFFF;background-color: #222222;
-			top: 140px;
+	#images{
+		text-align: center;color: #FFFFFF;background-color: #222222;
+			
 	}
+	
 	</style>
 	<body id="inside">
 		
@@ -163,11 +164,11 @@ $room_imag=$db_link->query($room_ima);
 			</div>
 			<div class="row" id="room_images">
 
-				<div class="col-sm-2 offset-1"></div>
+				<div class="col-sm-2 offset-sm-1"></div>
 
 				<?php 
 				while($room_name=$room_imag->fetch_assoc()){ ?>
-				<div class="col-xs-6 col-sm-2  " id="hvr-grow-shadow"  ><img src="images\<?php echo $room_name['img_id1'];  ?>"  width="280" height="180" >
+				<div class="col-sm-2  " id="hvr-grow-shadow"  ><img src="images\<?php echo $room_name['img_id1'];  ?> "  class="img-fluid" alt="Responsive image" >
 					<div id="images"><h3><?php echo $room_name['img_styles'] ?></h3></div>
 				</div>  <?php } ?>
 				
