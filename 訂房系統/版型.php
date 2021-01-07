@@ -123,10 +123,10 @@ h2{color:#FF9;
 <div class="row" id="nav">
 <div class="col-xs-1 col-sm-1 offset-sm-3 text-nowrap" id="btn1" ><a href="index.php">回首頁</a> </div>
 <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="new.php">最新消息</a> </div>
- <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#"><a href="#">客房導覽</a> </div>
- <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"> <a href="#">訂房須知</a>  </div>
-  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#">我要訂房</a>  </div>
-  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="#">訂房查詢</a> </div>
+ <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="room.php">客房導覽</a> </div>
+ <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"> <a href="note.php">訂房須知</a>  </div>
+  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="reservation.php">我要訂房</a>  </div>
+  <div class="col-xs-1 col-sm-1 text-nowrap" id="btn1"><a href="check_reservation.php">訂房查詢</a> </div>
 
 </div>
 
