@@ -1,29 +1,26 @@
 <?php 
 
 require_once("mysql.php");
-//訂房查詢
+
 session_start();
-if(isset($_POST["name"])&&($_POST["number"])){
-//取出資料
-	
-	 $check="SELECT number,name,reservation_style,reservation_date,reservation_money FROM reservation WHERE number=? " ;
-	$check_res=$db_link->prepare($check);
-	$check_res->bind_param("s", $_POST["number"]);
+if(!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"]=="")){
+	header("Location: check_reservation.php");
+}
+
+
+
+//讀取資料
+ $check="SELECT number,name,reservation_style,reservation_date,reservation_money FROM reservation WHERE number='{$_SESSION["loginMember"] }' " ;
+ $check_res=$db_link->prepare($check);
 	$check_res->execute();
 	$check_res->bind_result($number,$name,$reservation_style,$reservation_date,$reservation_money);
 	$check_res->fetch();
 	$check_res->close();
 
-//比對資料
-if(($_POST["number"]==$number)&&($_POST["name"]==$name)){
-			//紀錄資料
-		$_SESSION["loginMember"]=$number;
-	header("Location:check_reservation_b.php") ;
-}
-else{
-	header("Location:check_reservation.php?errMsg");
-}
-}
+	//刪除紀錄
+unset($_SESSION["loginMember"]);
+
+
 
 
  ?>
@@ -150,46 +147,41 @@ padding-top: 20px;
 				<div class="col-xs-12 col-sm-6 offset-sm-3" id="newcolor">new</div>
 			</div>
 
-			<div class="row" id="check_table">
+		
+				<div class="row" id="check_table" >
 				<div class="col-sm-4 offset-sm-4" >
 
-				<form action="check_reservation.php" method="POST" accept-charset="utf-8" id="check_form">
 				<table class="table table-bordered table-dark">
+					<thead>
+						<tr>
+
+							<th colspan="2"><center>您的訂房資料</center></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>姓名</td>
+							<td><?php echo $name ?></td>
+						</tr>
+						<tr>
+							<td>房型</td>
+							<td><?php echo $reservation_style ?></td>
+						</tr>
+						<tr>
+							<td>入住日期</td>
+							<td><?php echo $reservation_date ?></td>
+						</tr>
+						<tr>
+							<td>金額</td>
+							<td><?php echo $reservation_money ?></td>
+						</tr>
+					</tbody>
+				</table>
   
-  <tbody>
-    <tr>
-      <td>請輸入姓名</td>
-      <td><input type="text" name="name" value="" required></td>
-      </tr>
-    <tr>
-      <td>請輸入身份證字號</td>
-      <td><input type="text" name="number" value=""  required ></td>
-      </tr>
-    <tr>
-    
-      <td colspan="2">
-  <center>
-      		
-      	<input type="submit" class="btn btn-dark" name="" value="查詢">
-      		<input type="reset" class="btn btn-dark" name="" value="重填">
-      		<?php
-							if(isset($_GET['errMsg']))
-									{
-										echo "<p style='color: red'	>輸入錯誤</p>" ;
-									}
-						?>
-      		
 
-
-      	</center>
-      	</td>
-    </tr>
-  </tbody>
-</table>
-				</form>
-</div>
+				
 			</div>
-
+			</div>
 
 
 

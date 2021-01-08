@@ -1,10 +1,20 @@
+<?php
+$date_server=date("Y-m-d");
+require_once("mysql.php");
+$check="SELECT * FROM room_img " ;
+$check_signal_2 = $db_link->query($check);
+
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-		
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 		<title>曙光訂房系統</title>
 		<link rel="stylesheet" href="">
 	</head>
@@ -78,7 +88,22 @@
 				height: 2px;
 	}
 			#footer{width: 100%; position:fixed;top:95%;}
+	#check_table{
+	padding-top: 20px;
+	}
 	</style>
+<script>
+	
+
+
+
+
+	
+
+
+
+</script>
+
 	<body>
 		
 		<div class="container-fluid">
@@ -106,14 +131,53 @@
 			<div class="row" >
 				<div class="col-xs-12 col-sm-6 offset-sm-3" id="newcolor">new</div>
 			</div>
+			<div class="row" id="check_table">
+				<div class="col-sm-4 offset-sm-4" >
+					<form action="" method="POST" accept-charset="utf-8">
+						
+						
+						<table class="table table-bordered table-dark">
+							
+							<tbody>
+								<tr>
+									<td>姓名</td>
+									<td><input type="text" name="" value="" required></td>
+								</tr>
+								<tr>
+									<td>身分證字號</td>
+									<td><input type="text" name="" value="" placeholder="" pattern="[A-Z][a-z]"></td>
+								</tr>
+								<tr>
+									<td>選擇入住時間</td>
+									<td><input type="date" name="" value="<?php echo $date_server ; ?>" min="<?php echo $date_server ; ?>"></td>
+								</tr>
+								<tr>
+									<td>選擇房型</td>
+									<td><select name="pets">
+										<option  disabled selected>請選擇房型</option>
+										<?php while($check_signal_3=$check_signal_2->fetch_assoc()){
+											
+										echo "<option  id=".$check_signal_3["img_styles"].">".$check_signal_3["img_styles"]."</option>";
+												}
+												
+										 ?>
+									</select></td>
+								</tr>
+								<tr>
+									<td>金額</td>
+									<td >
+										
 
-				選擇入住時間
-				<input type="date" name="" value="">
-
-
-
-
-
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+						
+						
+					</form>
+				</div>
+			</div>
 			<div class="row" id="footer">
 				
 				<div class="col-md-8 offset-md-2 text-center" ><small>曙光訂房 地址:台中市潭子區圓通南路1111111號&nbsp;
@@ -122,7 +186,5 @@
 				</div>
 			</div>
 		</body>
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+		
 	</html>
