@@ -1,9 +1,25 @@
 <?php
+
+
+//取得當天日期
 $date_server=date("Y-m-d");
 require_once("mysql.php");
 $check="SELECT * FROM room_img " ;
 $check_signal_2 = $db_link->query($check);
 
+
+
+//判斷表單傳送資料
+if(isset($_POST["action"])&& ($_POST["action"]=="search")){
+require_once("mysql.php");
+$search="INSERT INTO reservation(number,name,reservation_style,reservation_date,reservation_money,remarks) VALUES(?,?,?,?,?,?)";
+$search_s=$db_link->prepare($search);
+$search_s->bind_param("ssssss",$_POST["number_table"],$_POST["name_table"],$_POST["room_table"],$_POST["date_table"],$_POST["money_table"],$_POST["remarks_table"]);
+$search_s->execute();
+$search_s->close();
+$db_link->close();
+	echo "<script>alert('訂房成功')</script>";
+}
 
 ?>
 <!DOCTYPE html>
@@ -96,10 +112,30 @@ $check_signal_2 = $db_link->query($check);
 	
 
 
+$(document).change(function(){
+		$('select').bind('click',sayOK);	
 
+	});
 
+	function sayOK(){
+		if (event.target.value == '豪華風/單人房'){
+		 document.getElementById("sList").innerHTML='$1,000';
+		 document.getElementById("money_bb").value='$1,000';
+				}
+		if (event.target.value == '豪華風/雙人房'){
+		 document.getElementById("sList").innerHTML='$2,000';
+		 document.getElementById("money_bb").value='$2,000';
+				}
+		if (event.target.value == '尊爵風/單人房'){
+		 document.getElementById("sList").innerHTML='$3,000';
+		 document.getElementById("money_bb").value='$3,000';
+				}
+		if (event.target.value == '尊爵風/雙人房'){
+		 document.getElementById("sList").innerHTML='$4,000';
+		 document.getElementById("money_bb").value='$4,000';
+				}
+		}	
 	
-
 
 
 </script>
@@ -133,7 +169,7 @@ $check_signal_2 = $db_link->query($check);
 			</div>
 			<div class="row" id="check_table">
 				<div class="col-sm-4 offset-sm-4" >
-					<form action="" method="POST" accept-charset="utf-8">
+					<form action="reservation.php" method="POST" accept-charset="utf-8">
 						
 						
 						<table class="table table-bordered table-dark">
@@ -141,23 +177,25 @@ $check_signal_2 = $db_link->query($check);
 							<tbody>
 								<tr>
 									<td>姓名</td>
-									<td><input type="text" name="" value="" required></td>
+									<td><input type="text" name="name_table" value="" placeholder="必填" required></td>
 								</tr>
 								<tr>
 									<td>身分證字號</td>
-									<td><input type="text" name="" value="" placeholder="" pattern="[A-Z][a-z]"></td>
+									<td><input type="text" name="number_table" value="" placeholder="必填*10碼" pattern="[A-Z0-9]{10,}" required>
+
+									</td>
 								</tr>
 								<tr>
 									<td>選擇入住時間</td>
-									<td><input type="date" name="" value="<?php echo $date_server ; ?>" min="<?php echo $date_server ; ?>"></td>
+									<td><input type="date" name="date_table" value="<?php echo $date_server ; ?>" min="<?php echo $date_server ; ?>" ></td>
 								</tr>
 								<tr>
 									<td>選擇房型</td>
-									<td><select name="pets">
+									<td><select name="room_table" >
 										<option  disabled selected>請選擇房型</option>
 										<?php while($check_signal_3=$check_signal_2->fetch_assoc()){
-											
-										echo "<option  id=".$check_signal_3["img_styles"].">".$check_signal_3["img_styles"]."</option>";
+												
+										echo "<option>".$check_signal_3["img_styles"]."</option>" ;
 												}
 												
 										 ?>
@@ -165,12 +203,23 @@ $check_signal_2 = $db_link->query($check);
 								</tr>
 								<tr>
 									<td>金額</td>
-									<td >
+									<td id="sList">
 										
-
 									</td>
 								</tr>
-								
+								<tr><td>備註</td><td>
+									<input type="text" name="remarks_table" value="">
+
+								</td></tr>
+								<tr>
+									<td colspan="2"><center>
+										<input type="hidden" name="money_table" value="" id="money_bb">
+										<input type="hidden" name="action" value="search">
+										<button type="submit" class="btn btn-dark">送出</button>
+										<button type="reset" class="btn btn-dark">重填</button></center>
+									</td>
+
+								</tr>>
 							</tbody>
 						</table>
 						
@@ -178,6 +227,7 @@ $check_signal_2 = $db_link->query($check);
 					</form>
 				</div>
 			</div>
+			
 			<div class="row" id="footer">
 				
 				<div class="col-md-8 offset-md-2 text-center" ><small>曙光訂房 地址:台中市潭子區圓通南路1111111號&nbsp;

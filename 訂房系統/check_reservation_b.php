@@ -10,10 +10,10 @@ if(!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"]=="")){
 
 
 //讀取資料
- $check="SELECT number,name,reservation_style,reservation_date,reservation_money FROM reservation WHERE number='{$_SESSION["loginMember"] }' " ;
+ $check="SELECT number,name,reservation_style,reservation_date,reservation_money,remarks FROM reservation WHERE number='{$_SESSION["loginMember"] }' " ;
  $check_res=$db_link->prepare($check);
 	$check_res->execute();
-	$check_res->bind_result($number,$name,$reservation_style,$reservation_date,$reservation_money);
+	$check_res->bind_result($number,$name,$reservation_style,$reservation_date,$reservation_money,$remarks);
 	$check_res->fetch();
 	$check_res->close();
 
@@ -175,6 +175,11 @@ padding-top: 20px;
 							<td>金額</td>
 							<td><?php echo $reservation_money ?></td>
 						</tr>
+						<tr>
+							<td>備註</td>
+							<td><?php echo $remarks ?></td>
+						</tr>
+
 					</tbody>
 				</table>
   
