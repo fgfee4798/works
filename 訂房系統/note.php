@@ -7,7 +7,7 @@
 
 	
 
-	<title>曙光訂房系統</title>
+	<title>曙光訂房系統/訂房須知</title>
 	<link rel="stylesheet" href="">
 </head>
 
@@ -133,18 +133,20 @@ h2{color:#FF9;
 
 <div class="row">
 <div class="col-xs-12  col-sm-3 offset-sm-3">	
-<p><h1>最新消息</h1></p>
+<p><h1>訂房須知</h1></p>
 </div>
 </div>
 <div class="row" >
 <div class="col-xs-12 col-sm-6 offset-sm-3" id="newcolor">new</div>
 </div>
 
+<div class="row">
+<div class="col-sm-6 offset-sm-3">
+<li>本網站使用了html.css.js.jq.php等技術</li>
 
 
-
-
-
+</div>
+</div>
 
 
 <div class="row" id="footer">
