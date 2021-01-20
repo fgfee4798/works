@@ -1,7 +1,7 @@
 <?php 
 require_once("mysql.php");
 
-$new="SELECT * FROM new ORDER BY id ASC " ;
+$new="SELECT * FROM new ORDER BY id DESC " ;
 $new_query=$db_link->query($new);
 
  ?>

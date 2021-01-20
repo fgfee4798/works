@@ -3,13 +3,13 @@ require_once("mysql.php");
 session_start();
 
 //檢查是否經過登入
-/*if(!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"]=="")){
+if(!isset($_SESSION["loginMember"]) || ($_SESSION["loginMember"]=="")){
 	header("Location: admin_login.php");
-}*/
+}
 
 
 
-$new="SELECT * FROM new ORDER BY id ASC " ;
+$new="SELECT * FROM new ORDER BY id DESC " ;
 $new_query=$db_link->query($new);
 
 
@@ -105,7 +105,7 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 	list-style: none;
 	}
 	li{margin-bottom:25px;background-color: #222222;
-		height: 100px;
+		height: 130px;
 		position: relative;.
 	}
 			
@@ -137,11 +137,11 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 			<div class="row">
 				<div class="col-xs-8 col-sm-6 offset-sm-3">
 					<ul>
-						<?php while($new_query_e=$new_query->fetch_assoc()){ ;
+						<?php while($new_query_e=$new_query->fetch_assoc()){ 
 
-						echo "<a href='admin_index_delete.php?id=".$new_query_e["id"]."'>"."<button type='button' class='btn btn-light'>修改</button></a>&nbsp;" ;
-						echo "<a href='admin_index_delete.php?id=".$new_query_e["id"]."'>"."<button type='button' class='btn btn-light'>刪除</button></a>" ;
-						echo "<li><h2>".$new_query_e["new_date"]."</h2><h4>&nbsp;&nbsp;".$new_query_e["news"]."</h4></li>";
+						
+						
+						echo "<li><h2>".$new_query_e["new_date"]."</h2><h4>&nbsp;&nbsp;".$new_query_e["news"]."</h4><a href='admin_delete.php?id=".$new_query_e["id"]."'>"."<button type='button' class='btn btn-light'>刪除</button></a></li>";
 
 						
 						

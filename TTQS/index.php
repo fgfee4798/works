@@ -224,7 +224,11 @@
 									?>
 								</select>
 							</span>
-							<font><?php echo $_POST["search_month"]; ?>月份的行程</font>
+							<font><?php 
+							if (isset($_POST["action_search"])) {
+							echo $_POST["search_month"]; } ?>月份的行程
+
+						</font>
 						</label>
 					</span>
 				</div>

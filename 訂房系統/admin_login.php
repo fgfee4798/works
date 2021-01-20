@@ -19,6 +19,8 @@ $query_RecLogin="SELECT username, password  FROM user WHERE username=?";
 	if($_POST["password"]==$password){
 	$_SESSION["loginMember"]=$username;
 	header("Location:admin_index.php");
+	}else{
+	header("Location:admin_login.php?errMsg");
 
 }
 }
@@ -54,13 +56,13 @@ $query_RecLogin="SELECT username, password  FROM user WHERE username=?";
 </head>
 
 <style>
-.container-fluid{background-color: #000000;height:100vh;}
+.container-fluid{background-color: #456268;height:100vh;}
 #top{background-color: #dab04c;
 	text-indent: -9999px;
 	height: 5px;
 }
 #top1{background-color: #393e46;
-	background: radial-gradient(closest-side at 55% 50%,#BBBBBB,#000000,#000001);
+	background: radial-gradient(closest-side at 55% 50%,#456268,#456268,#456268);
 	
 	text-align: center;
 	color: #FFFFFF;
@@ -136,9 +138,11 @@ h2{color:#FF9;
 			height: 2px;
 }
 		
-table{background-color: #CCCCCC;
+table{background-color: #f1f1f1;
+	border:1px solid #cdac81; 
 margin-top: 30px;
 }
+td{font-size: 1.2rem;}
 </style>
 
 
@@ -174,18 +178,21 @@ margin-top: 30px;
 
 <table>
 	<tr>
-		<td>帳號:</td><td><input type="text" name="username" value=""></td>
+		<td>帳號:</td><td><input type="text" name="username" value="" required></td>
 	</tr>
 	<tr>
-		<td>密碼:</td><td><input type="password" name="password" value=""></td>
+		<td>密碼:</td><td><input type="password" name="password" value="" required></td>
 	</tr>
 <tr>
 		<td colspan="2"><center>
-			<input type="submit" name="action" value="送出">
-			<input type="reset" name="" value="重填"></center></td>
+			<input type="submit" name="action" value="送出" class="btn btn-secondary">
+			<input type="reset" name="" value="重填" class="btn btn-secondary"><?php
+							if(isset($_GET['errMsg']))
+									{
+										echo "<p style='color: red'	>輸入錯誤</p>" ;
+									}
+						?></center></td>
 	</tr>
-
-
 
 
 </table>
