@@ -3,12 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-	
-
+<!--網頁名稱-->
 	<title>曙光訂房系統</title>
-	<link rel="stylesheet" href="">
+<!--SEO關鍵字搜尋-->
+<meta name="keywords" content="曙光訂房系統">
+<!--網站簡介-->
+<meta name="description" content="盤據陽明山俯視大台北市區之美景，享受陽明山特有的曙光，提供旅客頂級休閒之旅">
+<!--作者email-->
+<meta name="made" content="fgfee4798@gmail.com">
+<!--作者-->
+<meta name="author" content="Yi guang">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 
 <style>

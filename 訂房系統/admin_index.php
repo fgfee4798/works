@@ -141,7 +141,7 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 
 						
 						
-						echo "<li><h2>".$new_query_e["new_date"]."</h2><h4>&nbsp;&nbsp;".$new_query_e["news"]."</h4><a href='admin_delete.php?id=".$new_query_e["id"]."'>"."<button type='button' class='btn btn-light'>刪除</button></a></li>";
+						echo "<li><h2>".$new_query_e["new_date"]."</h2><h4>&nbsp;&nbsp;".$new_query_e["news"]."</h4><a href='admin_delete.php?id=".$new_query_e["id"]."'>"."<button type='button' class='btn btn-light'>刪除</button></a>&nbsp;<a href='admin_update.php?id=".$new_query_e["id"]."'>"."<button type='button' class='btn btn-light'>修改</button></a></li>";
 
 						
 						

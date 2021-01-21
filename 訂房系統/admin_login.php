@@ -200,7 +200,8 @@ td{font-size: 1.2rem;}
 </form>
 
 
-
+<h2>帳號admin</h2>
+<h2>密碼admin</h2>
 </div>
 
 </div>
